@@ -54,7 +54,7 @@ function Breadcrumb({ mapId }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/RWS-SGCIJ-Dataportaal-Protoype/'>
       <Routes>
         <Route path="/" element={<MapRouteWrapper />} >
           <Route path="map/:mapId" element={<MapRouteWrapper />} />
