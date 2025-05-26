@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/RWS-SGCIJ-Dataportaal-Protoype/',
+//  base: '/RWS-SGCIJ-Dataportaal-Protoype/',
   plugins: [
     react(),
     tailwindcss(),
