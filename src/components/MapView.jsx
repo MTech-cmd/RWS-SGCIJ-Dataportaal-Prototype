@@ -1,4 +1,5 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, Marker, Popup } from 'react-leaflet'
+import L from 'leaflet'
 import ObjectDetails from './ObjectDetails'
 import badges from '../data/badges'
 import { useNavigate } from 'react-router-dom'
@@ -10,9 +11,7 @@ export default function MapView({ currentMapId }) {
   const mapBadges = badges.filter(b => b.mapId === currentMapId)
 
   return (
-    <MapContainer center={[52.456, 4.625]} zoom={14} className="w-full h-full z-0">
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
+    <MapContainer crs={L.CRS.Simple} bounds={[[0, 0], [1080, 1920]]} style={{width: '100%', height: '100%'}} minZoom={0} maxZoom={0} scrollWheelZoom={true}>
       {mapBadges.map(badge => (
         <Marker
           key={badge.id}
