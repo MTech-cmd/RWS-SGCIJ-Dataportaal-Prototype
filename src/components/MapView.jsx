@@ -1,4 +1,4 @@
-import { MapContainer, Marker, Popup } from 'react-leaflet'
+import { ImageOverlay, MapContainer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import ObjectDetails from './ObjectDetails'
 import badges from '../data/badges'
@@ -11,7 +11,8 @@ export default function MapView({ currentMapId }) {
   const mapBadges = badges.filter(b => b.mapId === currentMapId)
 
   return (
-    <MapContainer crs={L.CRS.Simple} bounds={[[0, 0], [1080, 1920]]} style={{width: '100%', height: '100%'}} minZoom={0} maxZoom={0} scrollWheelZoom={true}>
+    <MapContainer crs={L.CRS.Simple} bounds={[[0, 0], [1080, 1920]]} center={[540, 900]} style={{width: '100%', height: '100%'}} zoom={0} minZoom={0} maxZoom={0} scrollWheelZoom={true}>
+      <ImageOverlay url={`${import.meta.env.BASE_URL}maps/sgcij.jpg`} bounds={[[0, 0], [1080, 1920]]}/>
       {mapBadges.map(badge => (
         <Marker
           key={badge.id}

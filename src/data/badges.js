@@ -3,7 +3,7 @@ const badges = [
   {
     id: 'badge-1',
     mapId: 'map-ijmuiden',
-    position: [52.456, 4.625],
+    position: [500, 800],
     type: 'details',
     apps: [
       {
@@ -24,7 +24,7 @@ const badges = [
   {
     id: 'badge-2',
     mapId: 'map-ijmuiden',
-    position: [52.460, 4.630],
+    position: [600, 1000],
     type: 'map', // leads to another map
     target: 'map-binnensluiskanaal',
     apps: [],
@@ -34,7 +34,7 @@ const badges = [
   {
     id: 'badge-3',
     mapId: 'map-binnensluiskanaal',
-    position: [52.470, 4.640],
+    position: [900, 900],
     type: 'details',
     apps: [
       {
@@ -58,7 +58,7 @@ const badges = [
   {
     id: 'badge-4',
     mapId: 'map-binnensluiskanaal',
-    position: [52.475, 4.645],
+    position: [300, 400],
     type: 'details',
     apps: [
       {
