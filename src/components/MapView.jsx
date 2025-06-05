@@ -12,7 +12,7 @@ export default function MapView({ currentMapId }) {
 
   return (
     <MapContainer crs={L.CRS.Simple} bounds={[[0, 0], [1080, 1920]]} center={[540, 900]} style={{width: '100%', height: '100%'}} zoom={0} minZoom={0} maxZoom={0} scrollWheelZoom={true}>
-      <ImageOverlay url={`${import.meta.env.BASE_URL}maps/sgcij.jpg`} bounds={[[0, 0], [1080, 1920]]}/>
+      <ImageOverlay url={`maps/sgcij.jpg`} bounds={[[0, 0], [1080, 1920]]}/>
       {mapBadges.map(badge => (
         <Marker
           key={badge.id}

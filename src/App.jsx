@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useParams, useNavigate, useLocation, Link } from 'react-router-dom'
+import { HashRouter, Routes, Route, useParams, useNavigate, useLocation, Link } from 'react-router-dom'
 import MapView from './components/MapView'
 import { useEffect } from 'react'
 
@@ -44,7 +44,6 @@ function BackButton() {
 }
 
 function Breadcrumb({ mapId }) {
-  // Simple breadcrumb, could be enhanced
   return (
     <div className="bg-gray-100 p-2 text-sm text-gray-700">
       Home / Maps / {mapId || 'Loading...'}
@@ -54,13 +53,12 @@ function Breadcrumb({ mapId }) {
 
 export default function App() {
   return (
-    <BrowserRouter basename='/RWS-SGCIJ-Dataportaal-Prototype/'>
+    <HashRouter>
       <Routes>
-        <Route path="/" element={<MapRouteWrapper />} >
-          <Route path="map/:mapId" element={<MapRouteWrapper />} />
-        </Route>
+        <Route path="/map/:mapId" element={<MapRouteWrapper />} />
+        <Route path="/" element={<MapRouteWrapper />} />
         <Route path="*" element={<div className="p-4">404: Pagina niet gevonden</div>} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
