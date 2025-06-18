@@ -12,7 +12,7 @@
     "electron": "electron .",
     "electron-arch": "electron . --gtk-version=3",
     "deploy": "gh-pages -d dist",
-    "scratch-dep": "git add . && git commit -m 'Committed using NPM script - No message provided' && git push && npm i && npm run build && npm run deploy",
+    "scratch-dep": "git add . && git commit -m 'Committed using NPM script - No message provided' && git push && npm i && npm run build --mode gh && npm run deploy",
     "scratch-elec": "npm i && npm run build && npm run electron-arch"
   },
   "dependencies": {

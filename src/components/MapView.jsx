@@ -1,18 +1,25 @@
 import { ImageOverlay, MapContainer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import ObjectDetails from './ObjectDetails'
-import badges from '../data/badges'
+import config from '../data/config'
 import { useNavigate } from 'react-router-dom'
 import 'leaflet/dist/leaflet.css'
+
+const { badges, maps } = config
 
 export default function MapView({ currentMapId }) {
   const navigate = useNavigate()
 
   const mapBadges = badges.filter(b => b.mapId === currentMapId)
 
+  if (!maps[currentMapId]) {
+    return <div>Invalid map ID</div>;
+  }
+
+
   return (
     <MapContainer crs={L.CRS.Simple} bounds={[[0, 0], [1080, 1920]]} center={[540, 900]} style={{width: '100%', height: '100%'}} zoom={0} minZoom={0} maxZoom={0} scrollWheelZoom={true}>
-      <ImageOverlay url={`maps/sgcij.jpg`} bounds={[[0, 0], [1080, 1920]]}/>
+      <ImageOverlay url={`maps/${maps[currentMapId].image}`} bounds={maps[currentMapId].bounds} />
       {mapBadges.map(badge => (
         <Marker
           key={badge.id}

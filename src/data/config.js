@@ -26,14 +26,14 @@ const badges = [
     mapId: 'map-ijmuiden',
     position: [600, 1000],
     type: 'map', // leads to another map
-    target: 'map-binnensluiskanaal',
+    target: 'map-binnenspuikanaal',
     apps: [],
   },
 
-  // Map Binnensluiskanaal badges
+  // Map Binnenspuikanaal badges
   {
     id: 'badge-3',
-    mapId: 'map-binnensluiskanaal',
+    mapId: 'map-binnenspuikanaal',
     position: [900, 900],
     type: 'details',
     apps: [
@@ -57,7 +57,7 @@ const badges = [
   },
   {
     id: 'badge-4',
-    mapId: 'map-binnensluiskanaal',
+    mapId: 'map-binnenspuikanaal',
     position: [300, 400],
     type: 'details',
     apps: [
@@ -73,4 +73,22 @@ const badges = [
   },
 ]
 
-export default badges
+const maps = {
+  'map-ijmuiden': {
+    image: 'sgcij.jpg',
+    bounds: [[0, 0], [1080, 1920]],
+    title: 'IJmuiden Hoofdgebied'
+  },
+  'map-binnenspuikanaal': {
+    image: 'binnenspuikanaal.png',
+    bounds: [[0, 0], [1080, 1920]],
+    title: 'Binnensluiskanaal'
+  }
+}
+
+
+
+export default {
+  badges,
+  maps
+}

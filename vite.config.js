@@ -3,10 +3,18 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: '/RWS-SGCIJ-Dataportaal-Prototype', // Verander dit voor de web versie
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+export default defineConfig(({ mode }) => {
+  let base = './'
+
+  if (mode === 'gh') {
+    base = '/RWS-SGCIJ-Dataportaal-Prototype'
+  }
+
+  return {
+    base,
+    plugins: [
+      react(),
+      tailwindcss(),
+    ],
+  }
 })

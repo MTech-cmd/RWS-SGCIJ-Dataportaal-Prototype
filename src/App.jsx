@@ -1,3 +1,15 @@
+import L from 'leaflet'
+import markerIcon from 'leaflet/dist/images/marker-icon.png'
+import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+
+delete L.Icon.Default.prototype._getIconUrl
+
+L.Icon.Default.mergeOptions({
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow
+})
+
+
 import { HashRouter, Routes, Route, useParams, useNavigate, useLocation, Link } from 'react-router-dom'
 import MapView from './components/MapView'
 import { useEffect } from 'react'
@@ -5,6 +17,8 @@ import { useEffect } from 'react'
 function MapRouteWrapper() {
   const { mapId } = useParams()
   const navigate = useNavigate()
+
+   console.log("MapId from useParams:", mapId)
 
   // Redirect to default map if no mapId
   useEffect(() => {
