@@ -2,10 +2,14 @@ import SharepointApp from '../apps/SharepointApp.jsx'
 import UltimoApp from '../apps/UltimoApp.jsx'
 import MeridianApp from '../apps/MeridianApp.jsx'
 import RelaticsApp from '../apps/RelaticsApp.jsx'
+import ScadaApp from '../apps/ScadaApp.jsx'
+import GeneralApp from '../apps/GeneralApp.jsx'
 
 export const appRegistry = {
   sharepoint: SharepointApp,
   ultimo: UltimoApp,
   meridian: MeridianApp,
   relatics: RelaticsApp,
+  scada: ScadaApp,
+  algemeen: GeneralApp
 }

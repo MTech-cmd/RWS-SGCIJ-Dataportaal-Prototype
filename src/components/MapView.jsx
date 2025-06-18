@@ -30,6 +30,7 @@ export default function MapView({ currentMapId }) {
             closeButton={true}
           >
               <div className="min-w-[300px]">
+                <p className='text-xl font-bold'>{badge.title}</p>
                 {badge.type === 'details' ? (
                   <ObjectDetails apps={badge.apps} />
                 ) : (

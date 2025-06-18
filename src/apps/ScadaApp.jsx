@@ -18,7 +18,7 @@ export default function UltimoApp({ config }) {
 
   return (
     <div>
-      <h3 className="font-semibold text-green-700">⚙️ ULTIMO </h3>
+      <h3 className="font-semibold text-green-700">⚙️ SCADA</h3>
       <p>ID: {assetDetails.id}</p>
       <p>Status: {assetDetails.status}</p>
       <p>Last Maintenance: {assetDetails.lastMaintenance}</p>

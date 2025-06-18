@@ -7,7 +7,7 @@ export default function SharepointApp({ config }) {
   useEffect(() => {
     setTimeout(() => {
       setDocs([
-        { id: 1, title: `Doc 1 from ${documentLibrary}` },
+        { id: 1, title: `Soort document: ${documentLibrary}` },
         { id: 2, title: `Doc 2 filtered by ${filter}` },
       ])
     }, 500)
@@ -15,7 +15,7 @@ export default function SharepointApp({ config }) {
 
   return (
     <div>
-      <h3 className="font-semibold text-indigo-700">📄 SharePoint</h3>
+      <h3 className="font-semibold text-indigo-700">📄 Connect</h3>
       <ul className="list-disc ml-5 text-sm text-gray-800">
         {docs.map(doc => (
           <li key={doc.id}>{doc.title}</li>
