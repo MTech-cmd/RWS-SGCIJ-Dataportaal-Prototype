@@ -1,6 +1,7 @@
 import L from 'leaflet'
 import markerIcon from 'leaflet/dist/images/marker-icon.png'
 import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+import './App.css'
 
 delete L.Icon.Default.prototype._getIconUrl
 
@@ -8,7 +9,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: markerIcon,
   shadowUrl: markerShadow
 })
-
 
 import { HashRouter, Routes, Route, useParams, useNavigate, useLocation, Link } from 'react-router-dom'
 import MapView from './components/MapView'
@@ -18,8 +18,6 @@ function MapRouteWrapper() {
   const { mapId } = useParams()
   const navigate = useNavigate()
 
-   console.log("MapId from useParams:", mapId)
-
   // Redirect to default map if no mapId
   useEffect(() => {
     if (!mapId) {
@@ -28,16 +26,35 @@ function MapRouteWrapper() {
   }, [mapId, navigate])
 
   return (
-    <div className="flex flex-col h-screen">
-      <nav className="bg-blue-600 text-white p-3 flex items-center gap-4">
-        <Link to="/map/map-ijmuiden" className="hover:underline">IJmuiden</Link>
-        <Link to="/map/map-binnensluiskanaal" className="hover:underline">Binnensluiskanaal</Link>
+    <div className="flex flex-col h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 font-sans">
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-blue-300 shadow-md px-6 py-4 flex items-center gap-6 select-none">
+        <Link
+          to="/map/map-ijmuiden"
+          className="text-rws-blue font-semibold text-lg tracking-wide hover:text-rws-blue-dark transition-colors duration-250"
+        >
+          IJmuiden
+        </Link>
+        <Link
+          to="/map/map-binnenspuikanaal"
+          className="text-rws-blue font-semibold text-lg tracking-wide hover:text-rws-blue-dark transition-colors duration-250"
+        >
+          Binnenspuikanaal
+        </Link>
+        <Link
+          to="/map/map-gemaal"
+          className="text-rws-blue font-semibold text-lg tracking-wide hover:text-rws-blue-dark transition-colors duration-250"
+        >
+          Gemaal
+        </Link>
+
         <BackButton />
       </nav>
+
       <Breadcrumb mapId={mapId} />
-      <div className="flex-grow">
-        {mapId ? <MapView currentMapId={mapId} /> : <div>Loading map...</div>}
-      </div>
+
+      <main className="flex-grow overflow-auto bg-white p-6">
+        {mapId ? <MapView currentMapId={mapId} /> : <div className="text-gray-600 text-center py-20 text-xl">Loading kaart…</div>}
+      </main>
     </div>
   )
 }
@@ -48,31 +65,63 @@ function BackButton() {
 
   return (
     <button
-      className="ml-auto bg-white text-blue-600 px-3 py-1 rounded hover:bg-gray-200 transition"
+      className="ml-auto bg-rws-blue text-white font-semibold px-5 py-2 rounded-lg shadow-lg hover:bg-rws-blue-dark transition-colors duration-300 select-none"
       disabled={location.key === 'default'}
       onClick={() => navigate(-1)}
+      title="Ga terug"
     >
-      ← Back
+      ← Terug
     </button>
   )
 }
 
 function Breadcrumb({ mapId }) {
   return (
-    <div className="bg-gray-100 p-2 text-sm text-gray-700">
-      Home / Maps / {mapId || 'Loading...'}
+    <div className="sticky top-[64px] z-40 bg-white/80 backdrop-blur-md border-b border-blue-200 px-6 py-3 text-sm text-gray-700 tracking-wide select-none font-medium">
+      Home &nbsp;/&nbsp; Kaarten &nbsp;/&nbsp; <span className="font-semibold text-rws-blue">{mapId || 'Laden...'}</span>
     </div>
   )
 }
 
 export default function App() {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/map/:mapId" element={<MapRouteWrapper />} />
-        <Route path="/" element={<MapRouteWrapper />} />
-        <Route path="*" element={<div className="p-4">404: Pagina niet gevonden</div>} />
-      </Routes>
-    </HashRouter>
+    <>
+      {/* RWS kleuren als CSS variabelen */}
+      <style>
+        {`
+          :root {
+            --rws-blue: #003580;
+            --rws-blue-dark: #001f4d;
+          }
+          .text-rws-blue {
+            color: var(--rws-blue);
+          }
+          .text-rws-blue-dark {
+            color: var(--rws-blue-dark);
+          }
+          .bg-rws-blue {
+            background-color: var(--rws-blue);
+          }
+          .bg-rws-blue-dark {
+            background-color: var(--rws-blue-dark);
+          }
+        `}
+      </style>
+
+      <HashRouter>
+        <Routes>
+          <Route path="/map/:mapId" element={<MapRouteWrapper />} />
+          <Route path="/" element={<MapRouteWrapper />} />
+          <Route
+            path="*"
+            element={
+              <div className="p-12 text-center text-red-600 font-semibold text-xl select-none">
+                404 — Pagina niet gevonden
+              </div>
+            }
+          />
+        </Routes>
+      </HashRouter>
+    </>
   )
 }

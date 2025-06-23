@@ -12,7 +12,7 @@ export default function MapView({ currentMapId }) {
   const mapBadges = badges.filter(b => b.mapId === currentMapId)
 
   if (!maps[currentMapId]) {
-    return <div>Invalid map ID</div>
+    return <div className="text-red-600 p-4 font-semibold">❌ Ongeldig kaart-ID</div>
   }
 
   return (
@@ -33,25 +33,34 @@ export default function MapView({ currentMapId }) {
 
       {mapBadges.map(badge => (
         <Marker key={badge.id} position={badge.position}>
-          <Popup autoPan={false} closeButton={true} maxWidth={800}>
-            <div className="min-w-[700px] max-w-[800px] max-h-[500px] overflow-auto">
-              <p className="text-xl font-bold mb-2">{badge.title}</p>
-              {badge.type === 'details' ? (
-                <ObjectDetails apps={badge.apps} />
-              ) : (
-                <button
-                  onClick={() => {
-                    if (badge.target) {
-                      navigate(`/map/${badge.target}`)
-                    }
-                  }}
-                  className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition"
-                >
-                  Ga naar kaart {badge.target}
-                </button>
-              )}
-            </div>
-          </Popup>
+<Popup
+  autoPan={false}
+  closeButton={true}
+  maxWidth={1600} // <- dit verhogen
+  className="popup-container"
+>
+    {badge.type === 'details' ? (
+  <div className="overflow-auto max-h-[620px] w-full min-w-220 p-6 rounded-2xl backdrop-blur-lg bg-white/85 shadow-2xl border border-white/50 transition-all duration-300 ease-in-out space-y-5">
+    <p className="text-2xl font-semibold text-rws-blue tracking-wide select-none">
+      {badge.title}
+    </p>
+
+      <ObjectDetails apps={badge.apps} />
+      </div>
+    ) : (
+      <button
+        onClick={() => {
+          if (badge.target) {
+            navigate(`/map/${badge.target}`)
+          }
+        }}
+        className="px-5 py-3 rounded-lg bg-gradient-to-r from-blue-700 via-orange-400 to-orange-500 text-white font-semibold shadow-md transition duration-300 ease-in-out hover:from-orange-500 hover:via-orange-400 hover:to-blue-700 hover:shadow-lg"
+      >
+        Ga naar kaart {badge.target}
+      </button>
+    )}
+</Popup>
+
         </Marker>
       ))}
     </MapContainer>

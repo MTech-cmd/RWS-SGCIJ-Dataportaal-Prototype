@@ -6,6 +6,7 @@ import ScadaApp from '../apps/ScadaApp.jsx'
 import GeneralApp from '../apps/GeneralApp.jsx'
 import GisApp from '../apps/GisApp.jsx'
 import DonarApp from '../apps/DonarApp.jsx'
+import WaterinfoApp from '../apps/WaterinfoApp.jsx'
 
 export const appRegistry = {
   sharepoint: SharepointApp,
@@ -15,5 +16,6 @@ export const appRegistry = {
   scada: ScadaApp,
   algemeen: GeneralApp,
   gis: GisApp,
-  donar: DonarApp
+  donar: DonarApp,
+  waterinfo: WaterinfoApp
 }

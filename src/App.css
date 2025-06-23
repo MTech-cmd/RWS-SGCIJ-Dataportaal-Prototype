@@ -1,0 +1,24 @@
+:root {
+  --rws-blue: #003580;
+  --rws-blue-dark: #001f4d;
+}
+
+.text-rws-blue {
+  color: var(--rws-blue);
+}
+
+.text-rws-blue-dark {
+  color: var(--rws-blue-dark);
+}
+
+.bg-rws-blue {
+  background-color: var(--rws-blue);
+}
+
+.bg-rws-blue-dark {
+  background-color: var(--rws-blue-dark);
+}
+
+.font-sans {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}

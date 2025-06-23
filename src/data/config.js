@@ -23,6 +23,10 @@ const badges = [
     type: 'details', // leads to another map
     apps: [
       {
+        appId: 'waterinfo',
+        config: { link: 'https://waterinfo.rws.nl/embed/thema/Waterbeheer/IJmuiden-Noordersluis-O(IJMO)/details?parameters=Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm&weergave=grafiek&view=map'},
+      },
+      {
         appId: 'algemeen',
         config: { title: 'Waterinfo RWS',
                   text: 'Actueel Peil: Noordersluis Oost',
@@ -36,6 +40,10 @@ const badges = [
     position: [590, 490],
     type: 'details', // leads to another map
     apps: [
+      {
+        appId: 'waterinfo',
+        config: { link: 'https://waterinfo.rws.nl/embed/thema/Waterbeheer/IJmuiden-Noordersluis-W(IJMW)/details?parameters=Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm&weergave=grafiek&view=map' }
+      },
       {
         appId: 'algemeen',
         config: { title: 'Waterinfo RWS',

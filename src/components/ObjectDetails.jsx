@@ -1,4 +1,5 @@
 import { appRegistry } from '../registry/AppRegistry'
+import { useState, useEffect } from 'react'
 
 export default function ObjectDetails({ apps }) {
   const categoryMap = {
@@ -9,7 +10,8 @@ export default function ObjectDetails({ apps }) {
     'scada': 'Externe Metingen',
     'donar': 'Externe Metingen',
     'meridian': 'Technische Tekeningen',
-    'algemeen': 'Object Metingen'
+    'algemeen': 'Object Metingen',
+    'waterinfo': 'Live Data',
   }
 
   const grouped = apps.reduce((acc, app) => {
@@ -19,34 +21,78 @@ export default function ObjectDetails({ apps }) {
     return acc
   }, {})
 
-  return (
-    <div className="flex flex-row flex-wrap gap-4">
-      {Object.entries(grouped).map(([category, groupedApps], i) => (
-        <div
-          key={i}
-          className="flex flex-col border rounded p-3 bg-white shadow w-[320px] min-w-[300px]"
-        >
-          <h3 className="text-md font-semibold mb-2 border-b pb-1">{category}</h3>
+  const liveData = grouped['Live Data'] || []
+  const otherCategories = Object.entries(grouped).filter(([cat]) => cat !== 'Live Data')
 
-          <div className="">
-            {groupedApps.map((app, j) => {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 500)
+    return () => clearTimeout(timeout)
+  }, [])
+
+  return (
+    <div className="flex flex-col gap-6 w-full">
+      {/* Live Data (full width) */}
+      {liveData.length > 0 && (
+        <section className="w-full p-5 rounded-2xl backdrop-blur-lg bg-white/85 shadow-2xl border border-gray-200">
+          <h3 className="text-lg font-bold text-[#003580] mb-4 border-b pb-2 select-none">
+            🌊 Live Data
+          </h3>
+          <div className="flex flex-col gap-4">
+            {liveData.map((app, i) => {
               const Component = appRegistry[app.appId]
               return (
                 <div
-                  key={j}
-                  className=""
+                  key={i}
+                  className="relative bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-blue-50 hover:shadow-md transition duration-200 ease-in-out"
                 >
-                  {Component ? (
+                  {loading ? (
+                    <div className="animate-pulse h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  ) : Component ? (
                     <Component config={app.config} />
                   ) : (
-                    <div className="text-sm text-red-600">Onbekende app: {app.appId}</div>
+                    <div className="text-red-600 text-sm font-medium">Onbekende app: {app.appId}</div>
                   )}
                 </div>
               )
             })}
           </div>
-        </div>
-      ))}
+        </section>
+      )}
+
+      {/* Other categories side-by-side */}
+      <div className="flex flex-wrap gap-6">
+        {otherCategories.map(([category, groupedApps], i) => (
+          <section
+            key={i}
+            className="flex flex-col bg-white/85 backdrop-blur-lg shadow-xl border border-gray-200 rounded-2xl p-5 w-fit max-w-xs"
+          >
+            <h3 className="text-md font-semibold text-[#003580] mb-4 border-b pb-2 select-none">
+              {category}
+            </h3>
+            <div className="flex flex-col gap-3">
+              {groupedApps.map((app, j) => {
+                const Component = appRegistry[app.appId]
+                return (
+                  <div
+                    key={j}
+                    className="relative bg-gray-50 border border-gray-200 rounded-lg p-3 hover:bg-purple-50 hover:shadow-md transition duration-200 ease-in-out"
+                  >
+                    {loading ? (
+                      <div className="animate-pulse h-4 bg-gray-200 rounded w-2/3 mb-1"></div>
+                    ) : Component ? (
+                      <Component config={app.config} />
+                    ) : (
+                      <div className="text-red-600 text-sm font-medium">Onbekende app: {app.appId}</div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   )
 }
