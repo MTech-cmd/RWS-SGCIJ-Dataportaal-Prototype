@@ -24,7 +24,9 @@ const badges = [
     apps: [
       {
         appId: 'algemeen',
-        config: { text: 'Actueel Peil: Noordersluis Oost', link: 'https://waterinfo.rws.nl/thema/Waterbeheer/IJmuiden-Noordersluis-O%28IJMO%29/details?parameters=Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm'}
+        config: { title: 'Waterinfo RWS',
+                  text: 'Actueel Peil: Noordersluis Oost',
+                  link: 'https://waterinfo.rws.nl/thema/Waterbeheer/IJmuiden-Noordersluis-O%28IJMO%29/details?parameters=Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm'}
       }
     ],
   },
@@ -36,7 +38,9 @@ const badges = [
     apps: [
       {
         appId: 'algemeen',
-        config: { text: 'Actueel Peil: Noordersluis West', link: 'https://waterinfo.rws.nl/thema/Waterbeheer/IJmuiden-Noordersluis-W%28IJMW%29/details?parameters=Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm'}
+        config: { title: 'Waterinfo RWS',
+                  text: 'Actueel Peil: Noordersluis West',
+                  link: 'https://waterinfo.rws.nl/thema/Waterbeheer/IJmuiden-Noordersluis-W%28IJMW%29/details?parameters=Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm'}
       }
     ],
   },
@@ -51,7 +55,7 @@ const badges = [
     apps: [
       {
         appId: 'meridian',
-        config: { drawingId: 'drawing-123' },
+        config: { drawingId: 'Zoutdam tekening' },
       },
       {
         appId: 'relatics',
@@ -59,7 +63,7 @@ const badges = [
       },
       {
         appId: 'ultimo',
-        config: { assetId: 'PUMP-999' },
+        config: { assetId: 'ZDam' },
       },
       {
         appId: 'sharepoint',
@@ -93,23 +97,110 @@ const badges = [
     apps: [
       {
         appId: 'meridian',
-        config: { drawingId: 'drawing-123' },
+        config: { drawingId: 'Tekening Stork 1' },
       },
       {
         appId: 'relatics',
-        config: { objectId: 'gate-456' },
+        config: { objectId: 'Pomp 1' },
       },
       {
         appId: 'ultimo',
-        config: { assetId: 'PUMP-999' },
+        config: { assetId: 'PUMP-1' },
       },
       {
         appId: 'sharepoint',
-        config: { documentLibrary: 'rapportages', filter: 'Zoutdam Project' },
+        config: { documentLibrary: 'rapportages', filter: 'Stork 1' },
       },
       {
         appId: 'scada',
-        config: { documentLibrary: 'rapportages', filter: 'Zoutdam Project' },
+        config: { documentLibrary: 'rapportages', filter: 'Stork 1' },
+      },
+    ],
+  },
+  {
+    id: 'badge-91',
+    mapId: 'map-gemaal',
+    position: [390, 1170],
+    title: 'Pomp 3',
+    type: 'details',
+    apps: [
+      {
+        appId: 'meridian',
+        config: { drawingId: 'Tekeningen Stork 3' },
+      },
+      {
+        appId: 'relatics',
+        config: { objectId: 'Pomp 3' },
+      },
+      {
+        appId: 'ultimo',
+        config: { assetId: 'PUMP-3' },
+      },
+      {
+        appId: 'sharepoint',
+        config: { documentLibrary: 'rapportages', filter: 'Stork 3' },
+      },
+      {
+        appId: 'scada',
+        config: { documentLibrary: 'rapportages', filter: 'Stork 3' },
+      },
+    ],
+  },
+  {
+    id: 'badge-92',
+    mapId: 'map-gemaal',
+    position: [390, 1535],
+    title: 'Pomp 6',
+    type: 'details',
+    apps: [
+      {
+        appId: 'meridian',
+        config: { drawingId: 'Tekeningen Pentair 6' },
+      },
+      {
+        appId: 'relatics',
+        config: { objectId: 'Pomp 6' },
+      },
+      {
+        appId: 'ultimo',
+        config: { assetId: 'PUMP-6' },
+      },
+      {
+        appId: 'sharepoint',
+        config: { documentLibrary: 'rapportages', filter: 'Pentair 6' },
+      },
+      {
+        appId: 'scada',
+        config: { documentLibrary: 'rapportages', filter: 'Pentair 6' },
+      },
+    ],
+  },
+  {
+    id: 'badge-93',
+    mapId: 'map-gemaal',
+    position: [500, 200],
+    title: 'Spuisluis',
+    type: 'details',
+    apps: [
+      {
+        appId: 'meridian',
+        config: { drawingId: 'Spuisluis' },
+      },
+      {
+        appId: 'relatics',
+        config: { objectId: 'GATE' },
+      },
+      {
+        appId: 'ultimo',
+        config: { assetId: 'GATE' },
+      },
+      {
+        appId: 'sharepoint',
+        config: { documentLibrary: 'rapportages', filter: 'Spuisluis' },
+      },
+      {
+        appId: 'scada',
+        config: { documentLibrary: 'rapportages', filter: 'Spuisluis' },
       },
     ],
   },
