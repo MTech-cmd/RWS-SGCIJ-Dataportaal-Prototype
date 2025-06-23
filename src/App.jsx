@@ -65,7 +65,7 @@ function BackButton() {
 
   return (
     <button
-      className="ml-auto bg-rws-blue text-white font-semibold px-5 py-2 rounded-lg shadow-lg hover:bg-rws-blue-dark transition-colors duration-300 select-none"
+      className="ml-auto px-5 py-3 rounded-lg bg-gradient-to-r from-blue-700 to-purple-500 text-white font-bold shadow-md transition duration-300 ease-in-out hover:from-blue-500 hover:to-teal-400 hover:shadow-lg"
       disabled={location.key === 'default'}
       onClick={() => navigate(-1)}
       title="Ga terug"

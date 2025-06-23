@@ -54,7 +54,7 @@ export default function MapView({ currentMapId }) {
             navigate(`/map/${badge.target}`)
           }
         }}
-        className="px-5 py-3 rounded-lg bg-gradient-to-r from-blue-700 via-orange-400 to-orange-500 text-white font-semibold shadow-md transition duration-300 ease-in-out hover:from-orange-500 hover:via-orange-400 hover:to-blue-700 hover:shadow-lg"
+        className="px-5 py-3 rounded-lg bg-gradient-to-r from-blue-700 to-purple-500 text-white font-bold shadow-md transition duration-300 ease-in-out hover:from-blue-500 hover:to-teal-400 hover:shadow-lg"
       >
         Ga naar kaart {badge.target}
       </button>
