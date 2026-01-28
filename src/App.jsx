@@ -1,4 +1,5 @@
 import L from 'leaflet'
+import rijksoverheidLogo from './assets/rijksoverheid.png'
 import markerIcon from 'leaflet/dist/images/marker-icon.png'
 import markerShadow from 'leaflet/dist/images/marker-shadow.png'
 import './App.css'
@@ -46,6 +47,8 @@ function MapRouteWrapper() {
         >
           Gemaal
         </Link>
+
+        <img src={rijksoverheidLogo}  width={40} className='absolute align-middle left-[50%]'/>
 
         <BackButton />
       </nav>
